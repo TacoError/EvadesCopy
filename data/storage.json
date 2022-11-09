@@ -1,0 +1,10 @@
+{
+    "taco": {
+        "hash": "dd10b7b867d54b05a4a9b37eaea731db1421d39b15a63c40df53b04adb900d87c8070e0a43fe9e36ad47b976b43b412f66b88548b4015a3c0aca11a18b23abe6",
+        "salt": "f09d0edffbe8215c641818ae6bc50303",
+        "points": 0,
+        "unlockedHeroes": [
+            "speedster"
+        ]
+    }
+}
