@@ -1,5 +1,6 @@
 const notepack = require("notepack.io");
 const PlayerEntity = require("./entities/playerEntity");
+const mathUtils = require("./utils/mathUtils");
 
 module.exports = class Player {
 
@@ -10,15 +11,16 @@ module.exports = class Player {
         this.heroes = [];
 
         this.entity = new PlayerEntity(
-            50,
-            50,
+            mathUtils.getRandomInt(15, 200 - 15),
+            mathUtils.getRandomInt(50 + 15, 500),
             15,
             this.hero.color,
             area,
             10,
             name,
             false,
-            getLevels
+            getLevels,
+            this
         );
         
         this.canDie = true;

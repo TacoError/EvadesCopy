@@ -36,8 +36,13 @@ function game(hero) {
         canvas.box(0, 0, 200, newLevelData.h, "green", false);
         canvas.box(newLevelData.w - 200, 0, 200, newLevelData.h, "green", false);
 
-        canvas.box(0, 0, 200, 50, "yellow", false);
-        canvas.box(0, newLevelData.h - 50, 200, 50, "yellow", false);
+        if (newLevelData.wh === 0) {
+            canvas.box(0, 0, 200, 50, "yellow", false);
+            canvas.box(0, newLevelData.h - 50, 200, 50, "yellow", false);
+        } else {
+            canvas.box(0, 0, 50, newLevelData.h, "yellow", false);
+        }
+        canvas.box(newLevelData.w - 50, 0, 50, newLevelData.h, "yellow", false);
     
         for (const entity of newLevelData.e) {
             canvas.circle(entity.x, entity.y, entity.r, entity.c, entity.o);
@@ -48,8 +53,10 @@ function game(hero) {
         canvas.restore();
 
         canvas.box(cw - 150, ch - 300, 150, 300, "rgba(220,220,220,0.5)", false);
-        canvas.box(cw - 125, ch - 200, 50, 50, "rgba(0,0,0,0.5)", false);
-        
+        canvas.box(cw -  ch - 200, 50, 50, "rgba(0,0,0,0.5)", false);
+
+        canvas.text(levelCosmetic.n, (cw / 2), 45, levelCosmetic.t, true, "Raleway", "45px", true, levelCosmetic.l, 2);
+
         requestAnimationFrame(startGameLoop);
     }
 

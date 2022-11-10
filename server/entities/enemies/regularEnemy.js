@@ -35,7 +35,6 @@ module.exports = class RegularEnemy extends Enemy {
             this.x -= this.radius / 2;
             this.right = false;
         } else if (this.x < 200 + this.radius) {
-            this.x += this.radius / 2;
             this.right = true;
         }   
         if (this.y > this.parent.height - (this.radius) || this.y < this.radius) {

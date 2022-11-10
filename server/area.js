@@ -20,6 +20,13 @@ module.exports = class Area {
     }
     
     checkCollisions(players) {
+        for (const player of players) {
+            for (const play of players) {
+                if (player.id === play.id) continue;
+                if (!player.entity.collidesWithCircle(play.entity.getCollider())) continue;
+                player.entity.collidePlayer(play);
+            }
+        }
         for (const entity of this.enemies) {
             for (const player of players) {
                 if (!entity.collidesWithCircle(player.entity.getCollider())) continue;
@@ -50,7 +57,8 @@ module.exports = class Area {
             w: this.width,
             h: this.height,
             e: this.enemies.map(enemy => enemy.toJSON()),
-            p: this.points
+            p: this.points,
+            wh: this.which
         };
     }
 

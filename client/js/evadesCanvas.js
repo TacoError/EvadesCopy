@@ -30,7 +30,7 @@ class EvadesCanvas {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	}
 
-	text(text, x, y, color = "black", center = true, font = "serif", size = "12px") {
+	text(text, x, y, color = "black", center = true, font = "serif", size = "12px", stroke = false, strokeColor = "red", strokeThickness = 1) {
 		const oldFillStyle = this.ctx.fillStyle;
 		this.ctx.fillStyle = color;
 		this.ctx.font = `${size} ${font}`;
@@ -40,6 +40,16 @@ class EvadesCanvas {
 			return;
 		}
 		this.ctx.fillText(text, x - (this.ctx.measureText(text).width / 2), y);
+		if (stroke) {
+			const oldLineWidth = this.ctx.lineWidth;
+			const oldStrokeColor = this.ctx.strokeColor;
+			this.ctx.lineWidth = strokeThickness;
+			this.ctx.strokeColor = strokeColor;
+			this.ctx.fillStyle = "black";
+			this.ctx.strokeText(text, x - (this.ctx.measureText(text).width / 2), y);
+			this.ctx.lineWidth = oldLineWidth;
+			this.ctx.strokeColor = oldStrokeColor;
+		}
 		this.ctx.fillStyle = oldFillStyle;
 	}
 

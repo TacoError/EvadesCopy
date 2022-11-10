@@ -4,38 +4,17 @@
     "levelColor": "rgba(237, 234, 222, 0.5)",
     "areas": [
         {
-            "width": 1500,
-            "height": 750,
+            "width": 2500,
+            "height": 500,
             "points": 0,
             "enemies": [
                 {
                    "type": "regular",
-                   "radius": 15,
+                   "radius": 20,
                    "speed": 3,
-                   "amount": 20,
+                   "amount": 3,
                    "color": "gray" 
                 }
-            ]
-        },
-        {
-            "width": 1500,
-            "height": 750,
-            "points": 0,
-            "enemies": [
-                {
-                   "type": "regular",
-                   "radius": 25,
-                   "speed": 5,
-                   "amount": 12,
-                   "color": "gray" 
-                },
-                {
-                    "type": "regular",
-                    "radius": 15,
-                    "speed": 5,
-                    "amount": 5,
-                    "color": "gray" 
-                 }
             ]
         }
     ]

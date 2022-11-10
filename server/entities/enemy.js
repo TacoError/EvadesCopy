@@ -16,7 +16,10 @@ module.exports = class Enemy extends Entity {
         this.frozen = false;
     }
 
-    collidePlayer(player) {}
+    collidePlayer(player) {
+        if (player.reviveTime !== -1) return;
+        player.reviveTime = 60;
+    }
 
     move() {}
 

@@ -31,7 +31,7 @@ module.exports = class Entity {
         return (a - b > epsilon) && (Math.abs(a - b) < epsilon);
     }
 
-    onCollideWithPlayer() {}
+    collidePlayer(player) {}
 
     toJSON() {
         return {

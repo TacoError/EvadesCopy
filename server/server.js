@@ -84,12 +84,13 @@ io.on("connection", (socket) => {
     });
 
     socket.on("keys", (keys) => {
+        if (!players[socket.id]) return;
         players[socket.id].setKeys(Object.keys(notepack.decode(keys)));
     });
 
     socket.on("disconnect", () => {
         if (!Object.keys(profilesOnline).includes(socket.id)) return;
-        delete profilesOnline[socket.id];
+        delete profilesOnline[players[socket.id].name];
         if (!Object.keys(players).includes(socket.id)) return;
         const data = players[socket.id];
         const name = data.name;
@@ -142,5 +143,16 @@ setInterval(() => {
     }
 
 }, (1000 / 50));
+
+setInterval(() => {
+    for (const player of Object.values(players)) {
+        if (player.reviveTime !== -1) {
+            player.reviveTime -= 1;
+            if (player.reviveTime === 0) {
+                // kill
+            }
+        }
+    }
+}, 1000);
 
 console.log("Ready (http://locahost:3000)");

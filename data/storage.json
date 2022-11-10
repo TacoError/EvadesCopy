@@ -6,5 +6,13 @@
         "unlockedHeroes": [
             "speedster"
         ]
+    },
+    "tacoo": {
+        "hash": "8dcb97359b8bff30bc8a5cc512a46b0ffcfa210cb8e678e5a0091de9b65c2d4f00a796a26d6674ab0f5b4142cdb5fe7b8b4f5157ec83aa044d8b6bc5d7848253",
+        "salt": "1726bd0f8d60b736d048a9f7232dc656",
+        "points": 0,
+        "unlockedHeroes": [
+            "speedster"
+        ]
     }
 }
