@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "evades.io clone",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node ."
+  },
   "author": "Taco",
   "license": "ISC",
   "dependencies": {
