@@ -5,7 +5,7 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 
 app.use(express.static("client"));
-server.listen(3000);
+server.listen(process.env.PORT || 3000);
 
 const login = require("./login");
 const notepack = require("notepack.io");
@@ -176,4 +176,4 @@ setInterval(() => {
     }
 }, 1000);
 
-console.log("Ready (http://locahost:3000)");
+console.log("Ready (http://locahost:" + (process.env.PORT || 3000) + ")");
