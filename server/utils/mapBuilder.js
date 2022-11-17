@@ -20,8 +20,8 @@ function buildMap(info) {
             for (let i = 0; i <= eData.amount; i++) {
                 if (eData.type === "regular") {
                     enemies.push(new RegularEnemy(
-                        math.getRandomInt(250, area.width - 250),
-                        math.getRandomInt(50, area.height - 50),
+                        math.getRandomInt((200 + eData.radius), area.width - (200 + eData.radius)),
+                        math.getRandomInt((eData.radius), area.height - eData.radius),
                         eData.radius,
                         eData.color,
                         area,

@@ -7,6 +7,7 @@ socket.on("init", (data) => {
 
 socket.on("response", (response) => {
     if (response === "inGame") {
+        document.getElementById("chat").style.display = "block";
         game(hero);
         return;
     }

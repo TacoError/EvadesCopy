@@ -1,18 +1,11 @@
 {
     "taco": {
-        "hash": "dd10b7b867d54b05a4a9b37eaea731db1421d39b15a63c40df53b04adb900d87c8070e0a43fe9e36ad47b976b43b412f66b88548b4015a3c0aca11a18b23abe6",
-        "salt": "f09d0edffbe8215c641818ae6bc50303",
+        "hash": "359a7715373099b6e791fd892c35dd682fd8812f809bf6af6b15bc7492589cb9ed12f8c2201cb9bc315712118a10f9e89434d41f008bef6df543e7d2ebe54f09",
+        "salt": "dadf6e95afdad3bd05642b120966b3cd",
         "points": 0,
         "unlockedHeroes": [
             "speedster"
-        ]
-    },
-    "tacoo": {
-        "hash": "8dcb97359b8bff30bc8a5cc512a46b0ffcfa210cb8e678e5a0091de9b65c2d4f00a796a26d6674ab0f5b4142cdb5fe7b8b4f5157ec83aa044d8b6bc5d7848253",
-        "salt": "1726bd0f8d60b736d048a9f7232dc656",
-        "points": 0,
-        "unlockedHeroes": [
-            "speedster"
-        ]
+        ],
+        "rank": "Guest"
     }
 }

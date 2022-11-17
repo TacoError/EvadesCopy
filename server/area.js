@@ -28,6 +28,7 @@ module.exports = class Area {
             }
         }
         for (const entity of this.enemies) {
+            if (entity.despawn) continue;
             for (const player of players) {
                 if (!entity.collidesWithCircle(player.entity.getCollider())) continue;
                 entity.collidePlayer(player);
@@ -53,10 +54,15 @@ module.exports = class Area {
     }
 
     toJSON() {
+        const enemies = [];
+        for (const enemy of this.enemies) {
+            if (enemy.despawn) continue;
+            enemies.push(enemy.toJSON());
+        }
         return {
             w: this.width,
             h: this.height,
-            e: this.enemies.map(enemy => enemy.toJSON()),
+            e: enemies,
             p: this.points,
             wh: this.which
         };

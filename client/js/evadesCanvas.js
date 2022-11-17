@@ -11,6 +11,25 @@ class EvadesCanvas {
 			this.canvas.width = window.innerWidth;
 			this.canvas.height = window.innerHeight;
 		});
+
+		this.mouseX = 0;
+		this.mouseY = 0;
+		this.canvas.addEventListener("mousemove", (mouse) => {
+			const rect = this.canvas.getBoundingClientRect();
+			this.mouseX = (mouse.clientX - rect.left) / (rect.right - rect.left) * this.canvas.width;
+			this.mouseY = (mouse.clientY - rect.top) / (rect.bottom - rect.top) * this.canvas.height;
+		});
+	}
+
+	getMousePos() {
+		return {
+			x: this.mouseX,
+			y: this.mouseY
+		};
+	}
+
+	scale(x, y) {
+		this.ctx.scale(x, y);
 	}
 
 	centerOnPosition(entity) {

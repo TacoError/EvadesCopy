@@ -10,9 +10,9 @@
             "enemies": [
                 {
                    "type": "regular",
-                   "radius": 20,
+                   "radius": 25,
                    "speed": 3,
-                   "amount": 3,
+                   "amount": 25,
                    "color": "gray" 
                 }
             ]

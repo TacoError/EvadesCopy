@@ -94,7 +94,7 @@ module.exports = class PlayerEntity extends Entity {
         }
 
         if (this.parent.which === 0 && this.x < (200 + this.radius)) {
-            if (this.y < 50) {
+            if (this.y < 50 + this.radius) {
                 this.lock = true;
                 this.moveLevel(true);
                 return;

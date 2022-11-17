@@ -10,9 +10,9 @@ module.exports = class Power {
     }
 
     cooldownSeconds() {
-        if (!this.lastUsed["getTime"]) return 0;
-        const ret = ((Math.abs((new Date().getTime() - this.lastUsed.getTime())) / 1000) - this.cooldown).toFixed(2);
-        return ret < 1 ? 0 : ret;
+        if (this.firstUse) return 0;
+        const ret = this.cooldown - ((new Date().getTime() - this.lastUsed.getTime()) / 1000);
+        return ret < 0.1 ? 0 : ret;
     }
 
     toJSON() {
@@ -24,7 +24,7 @@ module.exports = class Power {
     }
 
     isOnCooldown() {
-        return this.firstUse === true ? false : (Math.abs((new Date().getTime() - this.lastUsed.getTime())) / 1000) > this.cooldown;
+        return this.firstUse ? false : this.cooldownSeconds() > 0;
     }
 
     setOnCooldown() {

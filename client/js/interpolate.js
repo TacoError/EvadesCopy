@@ -5,6 +5,7 @@ function interpolate(start, end, delta = 0.5) {
 }
 
 // currently does not work, im assuming because of the above function.
+// confirmed, the above function goofy asf
 function interpolateArrays(arr1, arr2) {
 	const newArray = [];
 	for (const i in arr1) {

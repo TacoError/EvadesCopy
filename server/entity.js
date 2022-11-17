@@ -21,6 +21,7 @@ module.exports = class Entity {
         this.text = text;
         this.outline = outline;
         this.baseSpeed = this.speed;
+        this.despawn = false;
     }
 
     float_less_than(a, b, epsilon = 0.000000000000001) {

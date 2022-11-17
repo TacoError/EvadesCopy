@@ -78,9 +78,26 @@ io.on("connection", (socket) => {
             profile.unlockedHeroes, 
             io, 
             socket.id,
+            profile.rank,
             () => {return levels;}
         );
         respond("inGame");
+        emit("chatUpdate", "[server] Welcome, " + name);
+    });
+
+    socket.on("chat", (chat) => {
+        if (!players[socket.id]) return;
+        if (chat.length > 120) {
+            emit("chatUpdate", "[server] Chat message too long.");
+            return;
+        }
+        if (chat.length < 1) {
+            emit("chatUpdate", "[server] Chat message too little.");
+            return;
+        }
+        for (const id of Object.keys(players)) {
+            io.to(id).emit("chatUpdate", players[socket.id].name + ": " + chat);
+        }
     });
 
     socket.on("keys", (keys) => {
@@ -99,7 +116,8 @@ io.on("connection", (socket) => {
             hash: profile.hash,
             salt: profile.salt,
             points: data.points,
-            unlockedHeroes: data.heroes
+            unlockedHeroes: data.heroes,
+            rank: data.rank
         });
         delete players[socket.id];
     });
@@ -137,7 +155,7 @@ setInterval(() => {
             "gameUpdate", 
             notepack.encode(player.entity.toJSON()),
             notepack.encode(sendoutLevels[player.entity.parent.parent.name][player.entity.parent.which]),
-            notepack.encode(notepack.encode(player.hero.cooldownJSON())),
+            notepack.encode(player.hero.cooldownJSON()),
             notepack.encode(levels[player.entity.parent.parent.name].toJSON())
         );
     }

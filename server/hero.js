@@ -10,8 +10,8 @@ module.exports = class Hero {
 
     cooldownJSON() {
         return {
-            1: this.power1 === null ? 0 : this.power1.cooldownSeconds(),
-            2: this.power2 === null ? 0 : this.power2.cooldownSeconds()
+            one: this.power1 === null ? 0 : this.power1.cooldownSeconds(),
+            two: this.power2 === null ? 0 : this.power2.cooldownSeconds()
         };
     }
 
