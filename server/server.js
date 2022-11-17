@@ -10,7 +10,7 @@ server.listen(3000);
 const login = require("./login");
 const notepack = require("notepack.io");
 const players = {};
-const Speedster = require("./heroes/Speedster");
+const Speedster = require("./heroes/speedster");
 const Pusher = require("./heroes/pusher");
 const validHeroes = {
     "speedster": Speedster,
