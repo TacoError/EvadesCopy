@@ -33,6 +33,12 @@ module.exports = class Area {
                 if (!entity.collidesWithCircle(player.entity.getCollider())) continue;
                 entity.collidePlayer(player);
             }
+            for (const enemy of this.enemies) {
+                if (enemy.x === entity.x && enemy.y === entity.y || enemy.despawn) continue;
+                if (enemy.collidesWithCircle(entity.getCollider())) {
+                    enemy.collideEnemy(entity);
+                }
+            }
         }
     }
 

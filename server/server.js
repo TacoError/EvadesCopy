@@ -11,8 +11,10 @@ const login = require("./login");
 const notepack = require("notepack.io");
 const players = {};
 const Speedster = require("./heroes/Speedster");
+const Pusher = require("./heroes/pusher");
 const validHeroes = {
-    "speedster": Speedster
+    "speedster": Speedster,
+    "pusher": Pusher
 };
 const profilesMade = [];
 const profilesOnline = {};
@@ -79,7 +81,8 @@ io.on("connection", (socket) => {
             io, 
             socket.id,
             profile.rank,
-            () => {return levels;}
+            () => {return levels;},
+            socket
         );
         respond("inGame");
         emit("chatUpdate", "[server] Welcome, " + name);
@@ -167,7 +170,7 @@ setInterval(() => {
         if (player.reviveTime !== -1) {
             player.reviveTime -= 1;
             if (player.reviveTime === 0) {
-                // kill
+                player.socket.disconnect();
             }
         }
     }

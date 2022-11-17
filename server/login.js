@@ -39,7 +39,7 @@ module.exports = {
             hash: hash[0],
             salt: hash[1],
             points: 0,
-            unlockedHeroes: ["speedster"],
+            unlockedHeroes: ["speedster", "pusher"],
             rank: "Guest"
         });  
         db.sync();      

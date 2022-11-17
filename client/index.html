@@ -18,9 +18,50 @@
             pointer-events: none;
         }
         body {
+            margin: 0 !important;
+            padding: 0 !important;
+            text-align: center;
+            font-family: Raleway;
+            background-color: black;
             overflow: hidden;
-            margin: 0;
-            padding: 0;
+        }
+
+        #login {
+            color: white;
+            margin-top: 100px;
+        }
+
+        #login input, select, textarea {
+            color: white;
+            text-align: center;
+            background-color: gray;
+        }
+
+        #login ::placeholder {
+            color: white;
+        }
+
+        #login input {
+            background-color: gray;
+            font-family: Raleway;
+            width: 18%;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid white;
+            border-radius: 4px;
+        }
+
+        #login button {
+            color: lightgray;
+            background-color: darkslategray;
+            font-family: Raleway;
+            padding: 10px;
+            border: 1px solid white;
+            display: inline-block;
+        }
+
+        #login hr {
+            width: 20%;
         }
         #chat {
             display: none;
@@ -31,13 +72,14 @@
             max-width: 250px;
             max-height: 120px;
             height: 120px;
+            text-align: left;
         }
-        #chatText {
+        #chat #chatText {
             position: absolute;
             top: 135px;
             z-index: 1;
         }
-        #chatBox {
+        #chat #chatBox {
             word-wrap: break-word;
             display: flex;
             flex-direction: column-reverse;
@@ -54,17 +96,22 @@
             max-height: 120px;
             height: 120px;
         }
+        #login {
+            text-align: center;
+        }
     </style>
 
     <div id="overlay">
         <h1 style="color: white; text-align: center;"></h1>
     </div>
     <div id="login">
+        <h1>Evad</h1>
+        <p1>Version 1 (BETA)</p1><br><hr>
         <input id="username" placeholder="username"><br>
         <input id="password" placeholder="password" type="password"><br>
-        <button onclick="register()">Register</button><button onclick="login()">Login</button><br>
+        <button onclick="register()">Register</button>&nbsp;<button onclick="login()">Login</button><br><br>
         <select id="heroes">
-        </select><br>
+        </select><br><br>
         <p1 id="response"></p1>
     </div>
 

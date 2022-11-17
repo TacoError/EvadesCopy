@@ -4,7 +4,18 @@
         "salt": "dadf6e95afdad3bd05642b120966b3cd",
         "points": 0,
         "unlockedHeroes": [
-            "speedster"
+            "speedster",
+            "pusher"
+        ],
+        "rank": "Guest"
+    },
+    "asdasdsadasd": {
+        "hash": "c85e4f6acbbac4f15595ff2c62daf57f99ce4ae5b2a4edf087f0d98797191b47b2098d11374ad435d508e9a9189a883b55d03950e8678407e9dfd060fb341439",
+        "salt": "98a51f899ca6a52f9b111e50560fec06",
+        "points": 0,
+        "unlockedHeroes": [
+            "speedster",
+            "pusher"
         ],
         "rank": "Guest"
     }
