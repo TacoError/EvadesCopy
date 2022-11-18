@@ -69,7 +69,7 @@ function game(hero) {
         const ch = canvas.canvas.height;
 
         canvas.clear();
-        canvas.box(0, 0, canvas.canvas.width, canvas.canvas.height, "gray", false);
+        canvas.box(0, 0, canvas.canvas.width, canvas.canvas.height, "#4C4E52", false);
         canvas.centerOnPosition(myData);    
 
         canvas.box(0, 0, newLevelData.w, newLevelData.h, levelCosmetic.l, false);

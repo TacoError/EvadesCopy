@@ -33,6 +33,11 @@ module.exports = class PlayerEntity extends Entity {
             if (this.parent.parent.areas.length < current + 1) return;
             const next = this.parent.parent.areas[current + 1];
             if (next === undefined) return;
+            if (next.points > 0) {
+                if (!next.socketsPoints.includes(this.player.socket.id)) {
+                    this.player.points += next.points;
+                }
+            }
             this.x = 55 + this.radius;
             this.parent = next;
         } else {

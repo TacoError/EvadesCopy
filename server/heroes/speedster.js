@@ -1,4 +1,5 @@
 const Hero = require("../hero");
+const Push = require("./abilities/push");
 const Speedup = require("./abilities/speedup");
 
 module.exports = class Speedster extends Hero {

@@ -17,6 +17,7 @@ module.exports = class Area {
             new SAT.Box(new SAT.Vector(width + 1, 0), -1, height).toPolygon(),
             new SAT.Box(new SAT.Vector(0, this.height + 1), width, -1).toPolygon()
         ];
+        this.socketsPoints = [];
     }
     
     checkCollisions(players) {
