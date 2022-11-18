@@ -36,6 +36,7 @@ module.exports = class PlayerEntity extends Entity {
             if (next.points > 0) {
                 if (!next.socketsPoints.includes(this.player.socket.id)) {
                     this.player.points += next.points;
+                    next.socketsPoints.push(this.player.socket.id);
                 }
             }
             this.x = 55 + this.radius;
@@ -83,10 +84,10 @@ module.exports = class PlayerEntity extends Entity {
     processKeys(keys) {
         if (this.lock || this.player.reviveTime !== -1) return;
         const speed = keys.includes("shift") ? this.speed / 2 : this.speed;
-        if (keys.includes("w")) this.y -= speed;
-        if (keys.includes("s")) this.y += speed;
-        if (keys.includes("a")) this.x -= speed;
-        if (keys.includes("d")) this.x += speed;
+        if (keys.includes("w") || keys.includes("arrowup")) this.y -= speed;
+        if (keys.includes("s") || keys.includes("arrowdown")) this.y += speed;
+        if (keys.includes("a") || keys.includes("arrowleft")) this.x -= speed;
+        if (keys.includes("d") || keys.includes("arrowright")) this.x += speed;
         this.parent.correctMovement(this);
 
         if (this.x > this.parent.width - (50 + this.radius)) {

@@ -26,20 +26,25 @@ module.exports = class RegularEnemy extends Enemy {
         const movX = Math.abs(this.speed * this.angleX);
         const movY = Math.abs(this.speed * this.angleY);
 
-        if (this.right) this.x += movX;
-        else if (!this.right) this.x -= movX;
-        if (this.up) this.y -= movY;
-        else if (!this.up) this.y += movY;
-
         if (this.x > (this.parent.width - 200) - this.radius) {
             this.x -= this.radius / 2;
             this.right = false;
         } else if (this.x < 200 + this.radius) {
             this.right = true;
         }   
-        if (this.y > this.parent.height - (this.radius) || this.y < this.radius) {
+        if (this.y > this.parent.height - (this.radius)) {
             this.up = !this.up;
+            this.y = this.parent.height - this.radius;
         }
+        if (this.y < this.radius) {
+            this.up = !this.up;
+            this.y = this.radius;
+        }
+
+        if (this.right) this.x += movX;
+        else if (!this.right) this.x -= movX;
+        if (this.up) this.y -= movY;
+        else if (!this.up) this.y += movY;
     }
     
 }

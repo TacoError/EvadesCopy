@@ -62,10 +62,10 @@ io.on("connection", (socket) => {
             respond("Incorrect password.");
             return;
         }
-        // if (Object.keys(profilesOnline).includes(name)) {
-        //     respond("You are already in game.");
-        //     return;
-        // }
+        if (Object.keys(profilesOnline).includes(name)) {
+            respond("You are already in game.");
+            return;
+        }
         if (!Object.keys(validHeroes).includes(hero)) {
             respond("That is not a valid hero.");
             return;
@@ -109,19 +109,9 @@ io.on("connection", (socket) => {
     });
 
     socket.on("disconnect", () => {
-        if (!Object.keys(profilesOnline).includes(socket.id)) return;
-        delete profilesOnline[socket.id];
         if (!Object.keys(players).includes(socket.id)) return;
-        const data = players[socket.id];
-        const name = data.name;
-        const profile = login.getProfile(data.name);
-        login.saveProfile(name, {
-            hash: profile.hash,
-            salt: profile.salt,
-            points: data.points,
-            unlockedHeroes: data.heroes,
-            rank: data.rank
-        });
+        const player = players[socket.id];
+        delete profilesOnline[player.name];
         delete players[socket.id];
     });
 });
@@ -170,6 +160,7 @@ setInterval(() => {
         if (player.reviveTime !== -1) {
             player.reviveTime -= 1;
             if (player.reviveTime === 0) {
+                io.to(player.socket.id).emit("dead");
                 player.socket.disconnect();
             }
         }

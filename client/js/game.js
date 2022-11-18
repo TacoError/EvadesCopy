@@ -3,6 +3,12 @@ function game(hero) {
     const canvas = new EvadesCanvas();
     canvas.apply();
 
+    socket.on("dead", () => {
+        document.open();
+        document.write(`<h1 style="text-align: center;">You have died!</h1>`);
+        document.close();
+    });
+
     let myData = {};
     let oldLevelData = {};
     let newLevelData = {};
@@ -67,6 +73,8 @@ function game(hero) {
     function startGameLoop() {
         const cw = canvas.canvas.width;
         const ch = canvas.canvas.height;
+        
+        const entities = newLevelData.e;
 
         canvas.clear();
         canvas.box(0, 0, canvas.canvas.width, canvas.canvas.height, "#4C4E52", false);
@@ -84,7 +92,7 @@ function game(hero) {
         }
         canvas.box(newLevelData.w - 50, 0, 50, newLevelData.h, "yellow", false);
     
-        for (const entity of newLevelData.e) {
+        for (const entity of entities) {
             canvas.circle(entity.x, entity.y, entity.r, entity.c, entity.o);
             if (entity.t === "") continue;
             canvas.text(entity.t, entity.x, entity.y - 19, "black", true, "Raleway", "15px");
@@ -92,8 +100,12 @@ function game(hero) {
 
         canvas.restore();
 
+        if (newLevelData.p > 0) {
+            canvas.text(levelCosmetic.n + " Area: " + newLevelData.wh + "<br>" + newLevelData.p + " Points Awarded!", (cw / 2), 45, levelCosmetic.t, true, "Raleway", "45px", true, levelCosmetic.l, 2);
+        } else {
+            canvas.text(levelCosmetic.n + " Area: " + newLevelData.wh, (cw / 2), 45, levelCosmetic.t, true, "Raleway", "45px", true, levelCosmetic.l, 2);
+        }
 
-        canvas.text(levelCosmetic.n, (cw / 2), 45, levelCosmetic.t, true, "Raleway", "45px", true, levelCosmetic.l, 2);
         drawHeroCard();
 
         requestAnimationFrame(startGameLoop);

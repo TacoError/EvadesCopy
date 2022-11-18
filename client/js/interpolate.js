@@ -1,8 +1,6 @@
-function interpolate(start, end, delta = 0.5) {
-	let lerpto = delta / (1000 / 30);
-	let dx = end - start;
-	return start + dx * lerpto;
-}
+function interpolate(v0, v1, t) {
+	return v0*(1-0.7)+v1*0.7
+  }
 
 // currently does not work, im assuming because of the above function.
 // confirmed, the above function goofy asf
