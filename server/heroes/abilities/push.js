@@ -8,7 +8,7 @@ module.exports = class Push extends Power {
     }
 
     onUse() {
-        if (this.isOnCooldown()) return;
+        if (this.isOnCooldown() || this.player.reviveTime !== -1) return;
         this.setOnCooldown();
         const entity = new PushEntity(this.player);
         this.player.entity.parent.enemies.push(entity);

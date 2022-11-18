@@ -62,10 +62,10 @@ io.on("connection", (socket) => {
             respond("Incorrect password.");
             return;
         }
-        if (Object.keys(profilesOnline).includes(name)) {
-            respond("You are already in game.");
-            return;
-        }
+        // if (Object.keys(profilesOnline).includes(name)) {
+        //     respond("You are already in game.");
+        //     return;
+        // }
         if (!Object.keys(validHeroes).includes(hero)) {
             respond("That is not a valid hero.");
             return;
@@ -110,7 +110,7 @@ io.on("connection", (socket) => {
 
     socket.on("disconnect", () => {
         if (!Object.keys(profilesOnline).includes(socket.id)) return;
-        delete profilesOnline[players[socket.id].name];
+        delete profilesOnline[socket.id];
         if (!Object.keys(players).includes(socket.id)) return;
         const data = players[socket.id];
         const name = data.name;
