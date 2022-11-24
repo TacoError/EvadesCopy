@@ -5,7 +5,7 @@ function game(hero) {
 
     socket.on("dead", () => {
         document.open();
-        document.write(`<h1 style="text-align: center;">You have died!</h1>`);
+        document.write(`<style>body{background-color:black}</style><h1 style="text-align: center; color: lime;">You have died!</h1>`);
         document.close();
     });
 
@@ -15,6 +15,7 @@ function game(hero) {
     let cooldownData = {};
     let levelCosmetic = {};
     let chats = [];
+    let oldMyData = {};
 
     socket.on("chatUpdate", (chat) => {
         console.log(chat)
@@ -36,12 +37,12 @@ function game(hero) {
             beginKeySending();
             startGameLoop();
         }
+        oldMyData = myData;
         myData = notepack.decode(md);
         oldLevelData = newLevelData;
         newLevelData = notepack.decode(ld);
         cooldownData = notepack.decode(cd);
         levelCosmetic = notepack.decode(ld2);
-        console.log(cooldownData)
     });
 
     function drawHeroCard() {
@@ -75,10 +76,11 @@ function game(hero) {
         const ch = canvas.canvas.height;
         
         const entities = newLevelData.e;
+        const intE = myData;
 
         canvas.clear();
         canvas.box(0, 0, canvas.canvas.width, canvas.canvas.height, "#4C4E52", false);
-        canvas.centerOnPosition(myData);    
+        canvas.centerOnPosition(intE);    
 
         canvas.box(0, 0, newLevelData.w, newLevelData.h, levelCosmetic.l, false);
         canvas.box(0, 0, 200, newLevelData.h, "green", false);

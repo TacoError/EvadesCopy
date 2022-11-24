@@ -27,9 +27,10 @@ module.exports = class RegularEnemy extends Enemy {
         const movY = Math.abs(this.speed * this.angleY);
 
         if (this.x > (this.parent.width - 200) - this.radius) {
-            this.x -= this.radius / 2;
+            this.x = this.parent.width - (200 + this.radius);
             this.right = false;
         } else if (this.x < 200 + this.radius) {
+            this.x = 200 + this.radius;
             this.right = true;
         }   
         if (this.y > this.parent.height - (this.radius)) {
