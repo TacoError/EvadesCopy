@@ -1,4 +1,4 @@
-# Veto (Demo)[http://veto.herokuapp.com/]
+# Veto [Demo](http://veto.herokuapp.com/)
 
  - A multiplayer cooperative game.
 
